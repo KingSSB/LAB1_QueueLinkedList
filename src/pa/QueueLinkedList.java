@@ -3,6 +3,8 @@ package pa;
 /**
  * Implementado em fila ({@link Queue}) baseado em QueueLinked List
  *
+ *
+ *
  * @param <T> elemento a armazenar
  */
 
@@ -17,7 +19,7 @@ public class QueueLinkedList<T> implements Queue<T> {
     private Node header; //Sentinel header
     private Node trailer; //Sentinel trailer
 
-    //private int size;
+    private int size;
 
     /**
      *
@@ -31,6 +33,10 @@ public class QueueLinkedList<T> implements Queue<T> {
          */
         this.header = new Node(null, null, null);
         this.trailer = new Node(null, null, null);
+
+        header.next = trailer;
+
+        trailer.prev = header;
 
 
     }
@@ -47,11 +53,29 @@ public class QueueLinkedList<T> implements Queue<T> {
     public void Enqueue(T element) throws FullQueueException {
 
         try {
-            Node newNode = new Node(element, header.next, trailer.prev);
+            Node newNode = new Node (element, null ,null);
+
+            Node currentBeginning = header.next;
+
             header.next = newNode;
-            trailer.prev = newNode.next;
+
             newNode.prev = header;
-            newNode.next = trailer;
+
+            newNode.next = currentBeginning;
+
+            currentBeginning.prev = newNode;
+
+            currentBeginning.next = newNode.next;
+
+
+
+            //header.next = newNode.prev;
+
+
+            //newNode.next.prev = header;
+
+            size++;
+
         } catch (OutOfMemoryError e) {
             throw new FullQueueException("No memory more elements");
         }
@@ -72,15 +96,13 @@ public class QueueLinkedList<T> implements Queue<T> {
         if (isEmpty()) throw new EmptyQueueException();
 
 
-
-
         Node xpto = trailer.prev;
 
         T remove = xpto.element;
 
-        xpto.prev.next=trailer;
+        xpto.prev.next=trailer; //trailer.prev.prev.next = trailer;
 
-        trailer.prev = xpto.prev;
+        trailer.prev = xpto.prev; // trailer.prev = trailer.prev.prev
 
         //T remove = trailer.prev.element;
 
@@ -89,6 +111,8 @@ public class QueueLinkedList<T> implements Queue<T> {
 
         //header.next = trailer.prev;
 
+
+        size--;
 
         return remove;
 
@@ -116,8 +140,12 @@ public class QueueLinkedList<T> implements Queue<T> {
      * aumentado assim o count ao longo do processo.
      */
 
+    //Complexiadade O(1)
+
     @Override
     public int size() {
+
+        /*
 
         Node current = header.next;
         int count = 0;
@@ -129,6 +157,11 @@ public class QueueLinkedList<T> implements Queue<T> {
         }
 
         return count;
+
+
+         */
+
+        return this.size;
 
     }
 
@@ -160,6 +193,7 @@ public class QueueLinkedList<T> implements Queue<T> {
     @Override
     public void clear() {
 
+        /*
 
         Node current = header.next;
         while (current != trailer) {
@@ -170,6 +204,13 @@ public class QueueLinkedList<T> implements Queue<T> {
         header.next = trailer;
         trailer.prev = header;
 
+
+         */
+
+        header.next = trailer;
+        trailer.prev = header;
+
+        this.size = 0;
 
     }
 

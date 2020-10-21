@@ -1,7 +1,9 @@
 package pa;
 
 /**
- * @Class EmptyQueueException class que é serve para exceções de quando a pilha está
+ *
+ * EmptyQueueException class que é serve para exceções de quando a pilha está
+ *
  * empty e se quer lançar essa mesma exceção
  *
  *

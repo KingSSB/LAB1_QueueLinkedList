@@ -1,4 +1,5 @@
-package pa;
+import pa.Queue;
+import pa.QueueLinkedList;
 
 public class Main {
 

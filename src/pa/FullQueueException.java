@@ -2,7 +2,8 @@ package pa;
 
 
 /**
- * @Class FullQueueException class que é serve para exceções de quando a pilha está
+ * FullQueueException class que é serve para exceções de quando a pilha está
+ *
  * Full e se quer lançar essa mesma exceção
  *
  *
