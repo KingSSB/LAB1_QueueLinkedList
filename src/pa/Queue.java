@@ -17,7 +17,7 @@ package pa;
 public interface Queue <T> {
 
     /**
-     * Insere  o elemento <i>element</i> no bottom/fim da fila
+     * Insere  o novo elemento <i>element</i> no bottom/fim da fila
      *
      *
      *
@@ -32,10 +32,10 @@ public interface Queue <T> {
  public void Enqueue(T element) throws FullQueueException;
 
     /**
-     * Remove o elemento no bottom/fim da fila.
+     * Remove o elemento no bottom/fim da fila (elemento mais velho).
      *
      *
-     * @return o elemento do bottom/fim da pilha
+     * @return o elemento do bottom/fim da pilha (Elemento mais velho)
      * @throws EmptyQueueException se a pilha estiver vazia.
      */
 

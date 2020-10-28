@@ -15,7 +15,7 @@ public class Main {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-        System.out.println("Queue is size? " +queue.size());
+        System.out.println("Queue is size? " + queue.size());
 
         try {
             System.out.println("Queue is empty? " + queue.isEmpty());
@@ -30,7 +30,6 @@ public class Main {
             }
 
             System.out.println("Queue is size? " + queue.size());
-
 
 
         } catch (Exception e) {

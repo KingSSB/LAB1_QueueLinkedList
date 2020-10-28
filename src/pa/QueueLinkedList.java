@@ -53,7 +53,12 @@ public class QueueLinkedList<T> implements Queue<T> {
     public void Enqueue(T element) throws FullQueueException {
 
         try {
+
+
             Node newNode = new Node (element, null ,null);
+
+
+
 
             Node currentBeginning = header.next;
 
@@ -69,7 +74,15 @@ public class QueueLinkedList<T> implements Queue<T> {
 
 
 
-            //header.next = newNode.prev;
+            /*
+            header.next = newNode;
+
+            newNode.prev = header;
+
+            newNode.next = header.next.next;
+            */
+
+
 
 
             //newNode.next.prev = header;
