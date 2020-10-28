@@ -20,23 +20,28 @@ public class QueueLinkedList<T> implements Queue<T> {
     private Node trailer; //Sentinel trailer
 
     private int size;
+    //private int capacity;
 
     /**
      *
      * QueueLinkedList () - Construtor onde se inicia-se o header e o trailer
      *
      */
-    public QueueLinkedList() {
+    public QueueLinkedList() { //int capacity
         /*
         The configuration of an empty singly linked list is the sentinel
         pointing to null.
          */
+
+        //this.capacity = capacity;
         this.header = new Node(null, null, null);
         this.trailer = new Node(null, null, null);
 
         header.next = trailer;
 
         trailer.prev = header;
+
+        this.size= 0;
 
 
     }
@@ -54,12 +59,18 @@ public class QueueLinkedList<T> implements Queue<T> {
 
         try {
 
+              /*
+            newNode.prev = header;
 
-            Node newNode = new Node (element, null ,null);
+            newNode.next = header.next;
+            */
+            Node newNode = new Node (element, header.next ,header);
 
+            header.next = newNode;
 
+            newNode.next.prev = newNode;
 
-
+            /*
             Node currentBeginning = header.next;
 
             header.next = newNode;
@@ -71,21 +82,8 @@ public class QueueLinkedList<T> implements Queue<T> {
             currentBeginning.prev = newNode;
 
             currentBeginning.next = newNode.next;
-
-
-
-            /*
-            header.next = newNode;
-
-            newNode.prev = header;
-
-            newNode.next = header.next.next;
             */
 
-
-
-
-            //newNode.next.prev = header;
 
             size++;
 

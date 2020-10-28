@@ -35,8 +35,6 @@ public class TestQueueLinkedList {
          queue = new QueueLinkedList<>();
 
 
-
-
     }
 
     /**
@@ -54,9 +52,13 @@ public class TestQueueLinkedList {
 
         assertEquals(1,queue.size());
 
+        assertEquals(1,queue.Front());
+
+
         queue.Dequeue();
 
         assertEquals(0,queue.size());
+
 
         assertTrue(queue.isEmpty());
 
@@ -81,6 +83,8 @@ public class TestQueueLinkedList {
         queue.Enqueue(1);
 
         assertEquals(1,queue.size());
+
+        assertEquals(1,queue.Front());
 
         queue.Dequeue();
 
