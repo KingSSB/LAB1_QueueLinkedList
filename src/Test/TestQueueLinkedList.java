@@ -2,6 +2,7 @@ package Test;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pa.EmptyQueueException;
 import pa.Queue;
 import pa.QueueLinkedList;
 
@@ -78,6 +79,8 @@ public class TestQueueLinkedList {
     @Test
     void dequeue() {
 
+        assertThrows(EmptyQueueException.class, () -> queue.Dequeue());
+
         assertEquals(0,queue.size());
 
         queue.Enqueue(1);
@@ -129,6 +132,8 @@ public class TestQueueLinkedList {
     @Test
     public void size() {
 
+        assertEquals(0,queue.size());
+
         queue.Enqueue(1);
         queue.Enqueue(2);
         queue.Enqueue(3);
@@ -140,8 +145,6 @@ public class TestQueueLinkedList {
         queue.Dequeue();
 
         assertEquals(0,queue.size());
-
-
 
 
     }
@@ -163,6 +166,8 @@ public class TestQueueLinkedList {
         assertTrue(queue.isEmpty());
 
         queue.Enqueue(1);
+
+        assertFalse(queue.isEmpty());
 
         queue.Dequeue();
 
